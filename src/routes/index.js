@@ -1,13 +1,14 @@
-const { Router } = require("express")
+const { Router } = require("express");
+const userRouter = require("./usersRouter");
+const trafoRouter = require("./trafosRouter");
 
 const mainRouter = Router();
 
+mainRouter.use("/users",userRouter)
+
+mainRouter.use("/trafos",trafoRouter)
+
+
 module.exports = mainRouter;
 
-// app.get("/", (req, res) => {
-//     res.status(200).send("ok");
-// })
 
-// app.get("/users", (req, res) => {
-//     res.status(200).send("Estoy en users")
-// })
