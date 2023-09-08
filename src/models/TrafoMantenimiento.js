@@ -8,28 +8,28 @@ module.exports = (sequelize) => {
         },
         idxfoTransformador: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         FecMantenimiento: {
             type: DataTypes.DATE,
-            allownull: true,
+            allowNull: true,
         },
         ResponsableMant: {
             type: DataTypes.STRING(100),
-            allownull: true,
+            allowNull: true,
         },
         DescripcionMant: {
             type: DataTypes.STRING(500),
-            allownull: true,
+            allowNull: true,
         },
         ObservacionMant: {
             type: DataTypes.STRING(500),
-            allownull: true,
+            allowNull: true,
         },
         CodCR: {
             type: DataTypes.CHAR(4),
-            allownull: true,
+            allowNull: true,
         },
 
-    }, { timestamps: false })
+    }, { timestamps: false, freezeTableName: true })
 }

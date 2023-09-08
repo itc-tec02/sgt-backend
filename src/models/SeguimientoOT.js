@@ -13,43 +13,43 @@ module.exports = (sequelize) => {
         },
         TipoFlujo:{
             type: DataTypes.CHAR(1),
-            allownull: true,
+            allowNull: true,
         },
         CodCROrigen:{
             type: DataTypes.CHAR(5),
-            allownull: true,
+            allowNull: true,
         },
         CodUsrOrigen:{
             type: DataTypes.CHAR(10),
-            allownull: true,
+            allowNull: true,
         },
         FecEnvio:{
             type: DataTypes.DATE,
-            allownull: true,
+            allowNull: true,
         },
         CodCRDestino:{
             type: DataTypes.CHAR(5),
-            allownull: true,
+            allowNull: true,
         },
         CodUsrDestino:{
             type: DataTypes.CHAR(10),
-            allownull: true,
+            allowNull: true,
         },
         FecRecepcion:{
             type: DataTypes.DATE,
-            allownull: true,
+            allowNull: true,
         },
         FecRechazo:{
             type: DataTypes.DATE,
-            allownull: true,
+            allowNull: true,
         },
         Observaciones:{
             type: DataTypes.STRING(1000),
-            allownull: true,
+            allowNull: true,
         },
         Secuencial:{
             type: DataTypes.SMALLINT(3),
-            allownull: false,
+            allowNull: false,
         },
-    }, { timestamp: false })
+    }, { timestamps: false, freezeTableName: true })
 }

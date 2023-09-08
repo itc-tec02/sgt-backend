@@ -3,7 +3,8 @@ const { DataTypes } = require("sequelize")
 module.exports = (sequelize)=> {
     sequelize.define("xfoTransformador",{
         idxfoTransformador: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true,
         },
         TipoXfo: {
@@ -199,5 +200,5 @@ module.exports = (sequelize)=> {
             type: DataTypes.STRING(50),
             allowNull: true,
         },
-    }, { timestamp: false })
+    }, { timestamps: false, freezeTableName: true })
 }

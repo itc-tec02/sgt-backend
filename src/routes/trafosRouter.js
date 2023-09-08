@@ -10,7 +10,6 @@ const {
 const trafoRouter = Router();
 
 
-
 trafoRouter.get("/", getTrafosHandler )
 
 trafoRouter.get("/:id", getTrafoHandler )

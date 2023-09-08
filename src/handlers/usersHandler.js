@@ -1,3 +1,5 @@
+const { createUser } = require("../controllers/usuarioController")
+
 
 const getUsersHandler = (req, res) => {
     const { name } = req.query;
@@ -6,7 +8,7 @@ const getUsersHandler = (req, res) => {
     }else {
         res.status(200).send("Se mostrará todos los Usuarios");
     }
-    // name? res.status(200).send(`Quiero mostrar todoslos que se llamen: ${name}`) : res.status(200).send("Se mostrará todos los Usuarios");
+    
 }
 
 const getuserHandler = (req, res) => {
@@ -14,14 +16,17 @@ const getuserHandler = (req, res) => {
     res.status(200).send(`Va enviar el detalle del Usuario de ID  ${id}`)
 }
 
-const createUserHandler = (req, res) => {
-    const { name, email, phone } = req.body;
-    res.status(200).send(`
-        Crea nuevo usuario con:
-        name: ${name},
-        email: ${email} y 
-        phone: ${phone}
-    `)
+const createUserHandler = async (req, res) => {
+    try {
+
+        const { codigo, Nombres, Apellidos, Pass, Estado, NombreAbrev, CodUsuarioSOR, flagSAOC, cargo } = req.body;
+        console.log(req.body);
+        const newUser = await createUser(codigo, Nombres, Apellidos, Pass, Estado, NombreAbrev, CodUsuarioSOR, flagSAOC, cargo)        
+        res.status(200).json(newUser);
+        
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
 }
 
 const updateUserHandler = (req, res) => {

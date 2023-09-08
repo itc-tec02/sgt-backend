@@ -9,128 +9,128 @@ module.exports = (sequelize)=> {
         },
         FecEnsayo: {
             type: DataTypes.DATE,
-            allownull: true,
+            allowNull: true,
         },
         idxfoTransformador: {
             type: DataTypes.INTEGER(11),
             unique: true,
-            allownull: true,
+            allowNull: true,
         },
         Apto: {
             type: DataTypes.CHAR(1),
-            allownull: true,
+            allowNull: true,
         },
         raATM15: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raATM30: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raATM45: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raATM60: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raATMiab: {
             type: DataTypes.FLOAT,
-            allownull: true,
+            allowNull: true,
         },
         raBTM15: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raBTM30: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raBTM45: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raBTM60: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raBTMiab: {
             type: DataTypes.FLOAT,
-            allownull: true,
+            allowNull: true,
         },
         raATBT15: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raATBT30: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raATBT45: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raATBT60: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         raATBTiab: {
             type: DataTypes.FLOAT,
-            allownull: true,
+            allowNull: true,
         },
         rdPrueba1: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         rdPrueba2: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         rdPrueba3: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         rdPrueba4: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         rdPrueba5: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         rdPromedioX: {
             type: DataTypes.DECIMAL(5,2),
-            allownull: true,
+            allowNull: true,
         },
         rdDesvStd: {
             type: DataTypes.FLOAT(),
-            allownull: true,
+            allowNull: true,
         },
         paColor: {
             type: DataTypes.STRING(100),
-            allownull: true,
+            allowNull: true,
         },
         paNroNeutralizacion: {
             type: DataTypes.STRING(100),
-            allownull: true,
+            allowNull: true,
         },
         Observaciones: {
             type: DataTypes.STRING(1000),
-            allownull: true,
+            allowNull: true,
         },
         codCR: {
             type: DataTypes.CHAR(4),
-            allownull: true,
+            allowNull: true,
         },
         tipoNucleo: {
             type: DataTypes.STRING(50),
-            allownull: true,
+            allowNull: true,
         },
         idTecnico: {
             type: DataTypes.CHAR(10),
-            allownull: true,
+            allowNull: true,
         },
-    })
+    }, { timestamps: false, freezeTableName: true })
 }

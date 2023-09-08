@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize")
 
 module.exports = (sequelize) => {
-    sequelize.define("Usuario", {
+    sequelize.define("segUsuario", {
         CodUsuario:{
             type: DataTypes.STRING(10),
             primaryKey: true,
@@ -16,10 +16,10 @@ module.exports = (sequelize) => {
         },
         Password:{
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         Estado:{
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.CHAR(1),
             allowNull: false,
         },
         NombreAbrev:{
@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
             unique: true,
         },
         flagSAOC: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.CHAR(1),
             allowNull: true,
         },
         cargo: {
@@ -39,5 +39,5 @@ module.exports = (sequelize) => {
             allowNull: true,
         }    
         
-    },{ timestamps: false })
+    },{ timestamps: false, freezeTableName: true })
 }

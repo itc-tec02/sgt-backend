@@ -8,92 +8,92 @@ module.exports = (sequelize) => {
         },
         DescOrdenTrabajo: {
             type: DataTypes.STRING(1000),
-            allownull: true,
+            allowNull: true,
         },
         NroOC: {
             type: DataTypes.CHAR(10),
-            allownull: true,
+            allowNull: true,
         },
         NroSolOper: {
             type: DataTypes.CHAR(10),
-            allownull: true,
+            allowNull: true,
         },
         Estado: {
             type: DataTypes.BOOLEAN,
-            allownull: true,
+            allowNull: true,
         },
         EtapaProceso: {
             type: DataTypes.CHAR(1),
-            allownull: true,
+            allowNull: true,
         },
         CodUsrProp: {
             type: DataTypes.CHAR(10),
-            allownull: true,
+            allowNull: true,
         },
         FecCreacionOT: {
             type: DataTypes.DATE,
-            allownull: true,
+            allowNull: true,
         },
         CodUsuarioAct: {
             type: DataTypes.CHAR(10),
-            allownull: true,
+            allowNull: true,
         },
         FecAct: {
             type: DataTypes.DATE,
-            allownull: true,
+            allowNull: true,
         },
         idxfoSeguimintoOT: {
             type: DataTypes.INTEGER(11),
-            allownull: true,
+            allowNull: true,
         },
         tipoOrden: {
             type: DataTypes.CHAR(1),
-            allownull: true,
+            allowNull: true,
         },
         usr_sor: {
             type: DataTypes.CHAR(10),
-            allownull: true,
+            allowNull: true,
         },
         CasoEspecial: {
             type: DataTypes.CHAR(1),
-            allownull: true,
+            allowNull: true,
         },
         sa_aerea: {
             type: DataTypes.STRING(20),
-            allownull: true,
+            allowNull: true,
         },
         sa_subterranea: {
             type: DataTypes.STRING(20), 
-            allownull: true,
+            allowNull: true,
         },
         sa_prioridad: {
             type: DataTypes.CHAR(1), 
-            allownull: true,
+            allowNull: true,
         },
         sa_mantenimiento: {
             type: DataTypes.CHAR(1), 
-            allownull: true,
+            allowNull: true,
         },
         sa_vb1: {
             type: DataTypes.CHAR(10), 
-            allownull: true,
+            allowNull: true,
         },
         sa_vb2: {
             type: DataTypes.CHAR(10), 
-            allownull: true,
+            allowNull: true,
         },
         sa_vb3: {
             type: DataTypes.CHAR(10), 
-            allownull: true,
+            allowNull: true,
         },
         sa_vb4: {
             type: DataTypes.CHAR(10), 
-            allownull: true,
+            allowNull: true,
         },
         CodSolOper: {
             type: DataTypes.CHAR(10), 
-            allownull: true,
+            allowNull: true,
         }
         
-    },{ timestamp: false })
+    },{ timestamps: false, freezeTableName: true })
 }
