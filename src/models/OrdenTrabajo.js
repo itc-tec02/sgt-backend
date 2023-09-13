@@ -1,9 +1,11 @@
 const { DataTypes } = require("sequelize")
 
-module.exports = (sequelize) => {
-    sequelize.define("xfoOrdenTrabajo", {
+
+const OrdenTrabajoModel = (sequelize) => {
+    sequelize.define("xfo_OrdenTrabajo", {
         CodxfoOrdenTrabajo: {
-            type: DataTypes.CHAR(10),
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true
         },
         DescOrdenTrabajo: {
@@ -19,7 +21,7 @@ module.exports = (sequelize) => {
             allowNull: true,
         },
         Estado: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.CHAR(1),
             allowNull: true,
         },
         EtapaProceso: {
@@ -32,7 +34,7 @@ module.exports = (sequelize) => {
         },
         FecCreacionOT: {
             type: DataTypes.DATE,
-            allowNull: true,
+            defaultValue: DataTypes.NOW,
         },
         CodUsuarioAct: {
             type: DataTypes.CHAR(10),
@@ -40,9 +42,9 @@ module.exports = (sequelize) => {
         },
         FecAct: {
             type: DataTypes.DATE,
-            allowNull: true,
+            defaultValue: DataTypes.NOW,
         },
-        idxfoSeguimintoOT: {
+        idxfoSeguimientoOT: {
             type: DataTypes.INTEGER(11),
             allowNull: true,
         },
@@ -97,3 +99,5 @@ module.exports = (sequelize) => {
         
     },{ timestamps: false, freezeTableName: true })
 }
+
+module.exports = OrdenTrabajoModel;

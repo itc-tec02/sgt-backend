@@ -1,6 +1,5 @@
 const { Router } = require("express")
-const { 
-    getTrafosHandler,
+const { getTrafosHandler,
     getTrafoHandler,
     createTrafoHandler,
     updateTrafoHandler,
@@ -8,7 +7,6 @@ const {
 } = require("../handlers/trafosHandler")
 
 const trafoRouter = Router();
-
 
 trafoRouter.get("/", getTrafosHandler )
 

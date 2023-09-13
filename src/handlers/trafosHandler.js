@@ -1,15 +1,39 @@
-const { createTrafo } = require("../controllers/trafoController");
+const { createTrafo, getAllTrafos, getTrafobyId, searchTrafoByIndustria  } = require("../controllers/trafoController");
 
-const getTrafosHandler = (req , res) => {
-    res.status(200).send("Estoy en Trafos")
+const getTrafosHandler = async (req , res) => {
+    // res.status(200).send("Estoy en Trafos")
+    try {
+
+        const { fabricante } = req.query;
+        const trafos = fabricante ? await searchTrafoByIndustria(fabricante) : await getAllTrafos();
+
+        res.status(200).json(trafos)
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 }
-const getTrafoHandler = (req , res) => {
-    res.status(200).send("Estoy detalle de un Trafo")
+
+
+const getTrafoHandler = async (req , res) => {
+    try {
+        const { id } = req.params;
+        console.log(id);
+        if(!id) return;
+
+        const trafo = await getTrafobyId(id);
+        if(!trafo) {
+           res.status(404).json({ Message: `No se encontró Transformador de id: ${id}` }) 
+        }else {
+            res.status(200).json(trafo)
+        }
+
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
 }
+
 const createTrafoHandler = async (req , res) => {
     try {
-        // const { TipoXfo, NroCIA, Fabricante } = req.body;
-
         const trafoBody = {...req.body};
 
         console.log(trafoBody);
@@ -27,7 +51,6 @@ const updateTrafoHandler = (req , res) => {
 const deleteTrafoHandler = (req , res) => {
     res.status(200).send("Estoy en la eliminación lógica (activo - inactivo) de un Trafo")
 }
-
 
 module.exports = {
     getTrafosHandler,

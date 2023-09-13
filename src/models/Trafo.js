@@ -188,7 +188,7 @@ module.exports = (sequelize)=> {
             type: DataTypes.DECIMAL(6,2),
             allowNull: true,
         },
-        CnxSecundario: {
+        CnxEnSecundario: {
             type: DataTypes.STRING(10),
             allowNull: true,
         },

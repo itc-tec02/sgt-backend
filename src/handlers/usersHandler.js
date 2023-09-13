@@ -4,7 +4,7 @@ const { createUser } = require("../controllers/usuarioController")
 const getUsersHandler = (req, res) => {
     const { name } = req.query;
     if (name !== undefined) {
-        res.status(200).send(`Quiero mostrar todoslos que se llamen: ${name}`);
+        res.status(200).send(`Quiero mostrar todo slos que se llamen: ${name}`);
     }else {
         res.status(200).send("Se mostrará todos los Usuarios");
     }
