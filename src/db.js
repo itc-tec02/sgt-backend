@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize")
 require("dotenv").config()
-const {DB_USER, DB_PWD, DB_HOST, DB_NAME,} = process.env
+const {DB_USER, DB_PWD, DB_HOST, DB_NAME } = process.env
 
 const OrdenTrabajoModel = require("./models/OrdenTrabajo");
 const SegCrModel = require("./models/SegCr");
