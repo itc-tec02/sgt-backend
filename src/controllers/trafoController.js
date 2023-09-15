@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 
 
 const getAllTrafos = async () => {
-    return await xfoTransformador.findAll({ limit: 100, order: [['idxfoTransformador','DESC']] });
+    return await xfoTransformador.findAll({ limit: 20, order: [['idxfoTransformador','DESC']] });
 }
 
 const searchTrafoByIndustria = async (industria) => {
