@@ -6,7 +6,7 @@ const authRouter = Router();
 
 authRouter.get("/", getToken )
 
-authRouter.post("/token", authLogin )
+authRouter.post("/login", authLogin )
 
 // ... (When user logs in or signs up successfully)
 // const token = generateToken(user);

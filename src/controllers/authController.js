@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const getUserToken = async (TrafoId) => {
     return await segUsuario.findByPk(TrafoId)
 }
-const generateUserToken = async (user) => {
+const login = async (user) => {
     // const dbUser =  await segUsuario.findOne({ where: { CodUsuario: user.id, password: user.password } })
     const [dbUser] = await sequelize.query(`CALL sp_prueba_login('${user.id}','${user.password}')`)
     if(!dbUser) throw Error("User not found");
@@ -15,16 +15,16 @@ const generateUserToken = async (user) => {
         username: dbUser.Nombres,
         lastname: dbUser.Apellidos,
         abrev: dbUser.Nombreabrev,
-        role: ["ROLE_ALMACEN"],
+        role: dbUser.rol,
         perfil: dbUser.perfil,
         perfil_desc: dbUser.perfil_desc,
     }
-    const options = { expiresIn: "12h" }
-    return jwt.sign(payload, SECRET_KEY, options)
+    const options = { expiresIn: "8h" }
+    return { user: payload , token: jwt.sign({payload: payload.id}, SECRET_KEY, options)}
 }
 
 
 module.exports = {
     getUserToken,
-    generateUserToken,
+    login,
 }
