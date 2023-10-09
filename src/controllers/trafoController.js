@@ -1,9 +1,10 @@
-const { xfoTransformador } = require("../db")
+const { xfoTransformador, sequelize } = require("../db")
 const { Op } = require("sequelize");
 
 
 const getAllTrafos = async () => {
-    return await xfoTransformador.findAll({ limit: 20, order: [['idxfoTransformador','DESC']] });
+    // return await xfoTransformador.findAll({ limit: 20, order: [['idxfoTransformador','DESC']] });
+    return await sequelize.query(`CALL sp_get_trafos()`)
 }
 
 const searchTrafoByIndustria = async (industria) => {
