@@ -1,8 +1,9 @@
-const { xfo_OrdenTrabajo } = require("../db")
+const { xfo_OrdenTrabajo, sequelize } = require("../db")
 const { Op } = require("sequelize");
 
-const getOrdenes = async () => {
-    return await xfo_OrdenTrabajo.findAll({ limit:100, order: [['CodxfoOrdenTrabajo','DESC']] })
+const getOrdenes = async (userId) => {
+    // return await xfo_OrdenTrabajo.findAll({ limit:100, order: [['CodxfoOrdenTrabajo','DESC']] })
+    return await sequelize.query(`CALL sp_get_otts('${userId}')`)
 }
 const getOrden = async (id) => {
     return await xfo_OrdenTrabajo.findByPk(id)

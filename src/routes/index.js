@@ -15,12 +15,6 @@ mainRouter.use("/orders", ordersRouter)
 
 mainRouter.use("/auth", authRouter)
 
-// mainRouter.get('/protected', passport.authenticate('jwt', { session: false }), (req, res) => {
-//   res.json({ message: 'This is a protected route.' });
-// });
-
-
-  
 module.exports = mainRouter;
 
 
