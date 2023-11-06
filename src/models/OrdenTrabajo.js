@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize")
 
 
 const OrdenTrabajoModel = (sequelize) => {
-    sequelize.define("xfo_OrdenTrabajo", {
+    sequelize.define("xfoordentrabajo", {
         CodxfoOrdenTrabajo: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

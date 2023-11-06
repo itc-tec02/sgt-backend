@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports= (sequelize) => {
 
-    sequelize.define("xfo_TensionNP", {
+    sequelize.define("xfo_tensionns", {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

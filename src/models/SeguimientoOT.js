@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize")
 
 module.exports = (sequelize) => {
     
-    sequelize.define("xfoSeguimientoOT", {
+    sequelize.define("xfoseguimientoot", {
         idxfoSeguimientoOT:{
             type: DataTypes.INTEGER(11),
             primaryKey: true,

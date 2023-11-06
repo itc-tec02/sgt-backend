@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize")
 
 module.exports = (sequelize) => {
     
-    sequelize.define("xfo_HistorialMov", {
+    sequelize.define("xfohistorialmov", {
         idxfoHistorialMov: {
             type: DataTypes.BIGINT,
             autoIncrement: true,

@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize")
 
 module.exports = (sequelize) => {
-    sequelize.define("segUsuario", {
+    sequelize.define("segusuario", {
         CodUsuario:{
             type: DataTypes.STRING(10),
             primaryKey: true,
