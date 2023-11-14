@@ -20,6 +20,7 @@ const TrafoTipoIndustriaModel = require("./models/TrafoTipoIndustria");
 const TrafoTipoModelo = require("./models/TrafoTipoModelo");
 const UsuarioModel = require("./models/Users");
 const UsuarioCrModel = require("./models/UsersCr");
+const PuestoModel = require("./models/Puesto");
 
 const sequelize = new Sequelize(`mysql://${DB_USER}:${DB_PWD}@${DB_HOST}/${DB_NAME}`, { loggging: false } ) // Example for mysql
 // const sequelize = new Sequelize('mysql://itc:admin@localhost:3306/localServer') // Example for mysql
@@ -43,6 +44,7 @@ TrafoTipoIndustriaModel(sequelize);
 TrafoTipoModelo(sequelize);
 UsuarioModel(sequelize);
 UsuarioCrModel(sequelize);
+PuestoModel(sequelize);
 
 
 module.exports = { sequelize , ...sequelize.models}

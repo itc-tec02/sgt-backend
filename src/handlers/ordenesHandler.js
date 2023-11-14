@@ -3,8 +3,7 @@ const { getOrdenes, getOrden, createOrden, updateOrden, deleteOrden,} = require 
 
 const getOrdenesHandler = async (req, res) => {
     try {
-        console.log('Por body',req.body);
-        console.log('Por query',req.query);
+        
         const { userId } = req.query
         const ordenes = await getOrdenes(userId);        
         res.status(200).json(ordenes)

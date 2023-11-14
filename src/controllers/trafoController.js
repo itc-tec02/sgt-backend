@@ -1,4 +1,4 @@
-const { xfoTransformador, sequelize } = require("../db")
+const { xfotransformador, sequelize } = require("../db")
 const { Op } = require("sequelize");
 
 
@@ -8,16 +8,17 @@ const getAllTrafos = async () => {
 }
 
 const searchTrafoByIndustria = async (industria) => {
-    return await xfoTransformador.findAll({ where: { industria: { [Op.like]: `${industria}%` } } })
+    return await xfotransformador.findAll({ where: { industria: { [Op.like]: `${industria}%` } } })
 }
 
 const getTrafobyId = async (TrafoId) => {
-    return await xfoTransformador.findByPk(TrafoId)
+    return await xfotransformador.findByPk(TrafoId)
 }
 
 const createTrafo = async (trafoBody) => {
     // return await xfoTransformador_prueba.create({ TipoXfo, NroCIA, Fabricante })
-    return await xfoTransformador.create(trafoBody)
+    console.log(trafoBody);
+    return await xfotransformador.create(trafoBody)
 }
 
 module.exports = { createTrafo, getAllTrafos, getTrafobyId, searchTrafoByIndustria }

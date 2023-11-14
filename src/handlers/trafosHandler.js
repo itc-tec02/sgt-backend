@@ -36,7 +36,7 @@ const createTrafoHandler = async (req , res) => {
     try {
         const trafoBody = {...req.body};
 
-        console.log(trafoBody);
+        // console.log(trafoBody);
         // const newTrafo = await createTrafo(TipoXfo, NroCIA, Fabricante);
         const newTrafo = await createTrafo(trafoBody);
         res.status(200).json(newTrafo)

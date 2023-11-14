@@ -1,10 +1,10 @@
 const { Router } = require("express")
-const { getTrafosHandler,
+const { 
+    getTrafosHandler,
     getTrafoHandler,
     createTrafoHandler,
     updateTrafoHandler,
-    deleteTrafoHandler
-} = require("../handlers/trafosHandler")
+    deleteTrafoHandler } = require("../handlers/trafosHandler")
 
 const trafoRouter = Router();
 

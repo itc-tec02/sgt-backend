@@ -1,9 +1,9 @@
-const { segUsuario, sequelize } = require("../db")
+const { segusuario, sequelize } = require("../db")
 const { SECRET_KEY } = process.env
 const jwt = require('jsonwebtoken');
 
 const getUserToken = async (TrafoId) => {
-    return await segUsuario.findByPk(TrafoId)
+    return await segusuario.findByPk(TrafoId)
 }
 const login = async (user) => {
     // const dbUser =  await segUsuario.findOne({ where: { CodUsuario: user.id, password: user.password } })
