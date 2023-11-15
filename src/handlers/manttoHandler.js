@@ -6,6 +6,9 @@ const {
     getOpInfo,
     getContrat,
     getOpMant,
+
+    getGrupo,
+
 } = require("../controllers/manttoController")
 
 //* GET Mantenimiento Handlers
@@ -71,6 +74,21 @@ const getOperMantRed = async (req, res) => {
     }
 }
 
+//GET DE GRUPOS HANDLERS
+const getGrupoHandler = async (req, res) => {
+    try {
+        const {grupo} = req.params;        
+        // if(!grupo) throw Error("No se especificó código de Grupo")
+
+        const [paramGrupo] = await getGrupo(grupo);
+
+        res.status(200).json(paramGrupo)
+    } catch (error) {
+        res.status(400).json( {error: error.nessage });
+    }
+}
+
+
 //* POST Mantenimiento Handlers
 
 const createPotNominalHandler = async (req, res) => {
@@ -94,4 +112,6 @@ module.exports = {
     getOperInfo,
     getOperMantRed,
     getPotNominalHandler,
+
+    getGrupoHandler,
 }

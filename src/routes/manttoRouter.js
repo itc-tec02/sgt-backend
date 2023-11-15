@@ -7,14 +7,17 @@ const {
     getOperInfo,
     getOperMantRed,
     getPotNominalHandler,
+
+    getGrupoHandler,    
 } = require("../handlers/manttoHandler")
 
 const manttoRouter = Router();
 
+//* Mantenimiento Potencia Nominal
 manttoRouter.get("/pn", getPotNominalHandler);
 manttoRouter.post("/pn", createPotNominalHandler);
 
-//* Centro de Responsabilidad
+//* Mantenimiento Centro de Responsabilidad
 manttoRouter.get("/adm", getAdmSistema);
 manttoRouter.get("/alm", getAlmacenHandler);
 manttoRouter.get("/coi", getOperInfo);
@@ -27,5 +30,7 @@ manttoRouter.get("/omr", getOperMantRed);
 // manttoRouter.post("/cpt", createontratista);
 // manttoRouter.post("/omr", createOperMant);
 
+//* Mantenimiento Grupos
+manttoRouter.get("/gpo/:grupo", getGrupoHandler);
 
 module.exports = manttoRouter;
