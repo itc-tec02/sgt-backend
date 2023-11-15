@@ -8,13 +8,24 @@ const getPotNominal = async () => {
 }
 
 const getAdm = async () => {
-    return await sequelize.query(`SELECT * FROM segcr WHERE CodCRPadre= 'AMD' `)
+    return await sequelize.query('SELECT * FROM segcr WHERE CodCRPadre="ADM";')
 }
 
 const getAlmacen = async () => {
     return await sequelize.query(`SELECT * FROM segcr WHERE CodCRPadre= 'ALM' `)
 }
 
+const getOpInfo = async() => {
+    return await sequelize.query(`SELECT * FROM segcr WHERE CodCRPadre= 'COI' `)
+}
+
+const getContrat = async() => {
+    return await sequelize.query(`SELECT * FROM segcr WHERE CodCRPadre= 'CPT' `)
+}
+
+const getOpMant = async() => {
+    return await sequelize.query(`SELECT * FROM segcr WHERE CodCRPadre= 'OMR' `)
+}
 
 //* POST Mantenimiento Controllers
 
@@ -24,11 +35,11 @@ const createPotNominal = async( {codigo, descripcion, valor})  => {
 
 
 module.exports = {
-    getPotNominal,
     createPotNominal,
     getAdm,
     getAlmacen,
-    getOpInfo,
     getContrat,
+    getOpInfo,
     getOpMant,
+    getPotNominal,
 }

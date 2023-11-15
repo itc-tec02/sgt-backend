@@ -9,6 +9,7 @@ const {
 } = require("../controllers/manttoController")
 
 //* GET Mantenimiento Handlers
+
 const getPotNominalHandler = async (req, res) => {
     try {
         const [potNomal] = await getPotNominal();
@@ -19,9 +20,9 @@ const getPotNominalHandler = async (req, res) => {
     }
 }
 
-const getAdmSistema = async () => {
+const getAdmSistema = async (req, res) => {
     try {
-        const admSistema = await getAdm();
+        const [admSistema] = await getAdm();
         if(!admSistema) return
 
         res.status(200).json( admSistema )
@@ -29,9 +30,9 @@ const getAdmSistema = async () => {
         res.status(400).json( { error: error.message } )
     }
 }
-const getAlmacenHandler = async () => {
+const getAlmacenHandler = async (req, res) => {
     try {
-        const almacen = await getAlmacen();
+        const [almacen] = await getAlmacen();
         if(!almacen) return
 
         res.status(200).json( almacen )
@@ -39,9 +40,9 @@ const getAlmacenHandler = async () => {
         res.status(400).json( { error: error.message } )
     }
 }
-const getOperInfo = async () => {
+const getOperInfo = async (req, res) => {
     try {
-        const operInfo = await getOpInfo();
+        const [operInfo] = await getOpInfo();
         if(!operInfo) return
 
         res.status(200).json( operInfo )
@@ -49,9 +50,9 @@ const getOperInfo = async () => {
         res.status(400).json( { error: error.message } )
     }
 }
-const geContratista = async () => {
+const geContratista = async (req, res) => {
     try {
-        const contratista = await getContrat();
+        const [contratista] = await getContrat();
         if(!contratista) return
 
         res.status(200).json( contratista )
@@ -59,9 +60,9 @@ const geContratista = async () => {
         res.status(400).json( { error: error.message } )
     }
 }
-const getOperMantRed = async () => {
+const getOperMantRed = async (req, res) => {
     try {
-        const opMantRed = await getOpMant();
+        const [opMantRed] = await getOpMant();
         if(!opMantRed) return
 
         res.status(200).json( opMantRed )
@@ -86,11 +87,6 @@ const createPotNominalHandler = async (req, res) => {
 
 
 module.exports = {
-    createAdmSistema,
-    createAlmacen,
-    createontratista,
-    createOperInfo,
-    createOperMant,
     createPotNominalHandler,
     geContratista,
     getAdmSistema,

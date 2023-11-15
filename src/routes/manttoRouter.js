@@ -1,7 +1,12 @@
 const { Router } = require("express")
 const {
-    getPotNominalHandler,
     createPotNominalHandler,
+    geContratista,
+    getAdmSistema,
+    getAlmacenHandler,
+    getOperInfo,
+    getOperMantRed,
+    getPotNominalHandler,
 } = require("../handlers/manttoHandler")
 
 const manttoRouter = Router();
@@ -16,11 +21,11 @@ manttoRouter.get("/coi", getOperInfo);
 manttoRouter.get("/cpt", geContratista);
 manttoRouter.get("/omr", getOperMantRed);
 
-manttoRouter.post("/adm", createAdmSistema);
-manttoRouter.post("/alm", createAlmacen);
-manttoRouter.post("/coi", createOperInfo);
-manttoRouter.post("/cpt", createontratista);
-manttoRouter.post("/omr", createOperMant);
+// manttoRouter.post("/adm", createAdmSistema);
+// manttoRouter.post("/alm", createAlmacen);
+// manttoRouter.post("/coi", createOperInfo);
+// manttoRouter.post("/cpt", createontratista);
+// manttoRouter.post("/omr", createOperMant);
 
 
 module.exports = manttoRouter;
