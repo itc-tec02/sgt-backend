@@ -9,6 +9,18 @@ const manttoRouter = Router();
 manttoRouter.get("/pn", getPotNominalHandler);
 manttoRouter.post("/pn", createPotNominalHandler);
 
-manttoRouter.get("/cr", getPotNominalHandler);
+//* Centro de Responsabilidad
+manttoRouter.get("/adm", getAdmSistema);
+manttoRouter.get("/alm", getAlmacenHandler);
+manttoRouter.get("/coi", getOperInfo);
+manttoRouter.get("/cpt", geContratista);
+manttoRouter.get("/omr", getOperMantRed);
+
+manttoRouter.post("/adm", createAdmSistema);
+manttoRouter.post("/alm", createAlmacen);
+manttoRouter.post("/coi", createOperInfo);
+manttoRouter.post("/cpt", createontratista);
+manttoRouter.post("/omr", createOperMant);
+
 
 module.exports = manttoRouter;
