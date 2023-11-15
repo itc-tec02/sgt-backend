@@ -31,6 +31,9 @@ const getGrupo = async (grupo) => {
     return await sequelize.query(`SELECT * FROM gentablacodigo WHERE codgenTablaTipo= '${grupo}' `)
 }
 
+
+
+
 //* POST Mantenimiento Controllers
 
 const createPotNominal = async( {codigo, descripcion, valor})  => {    

@@ -1,17 +1,18 @@
-const { createUser } = require("../controllers/usuarioController")
+const { createUser, getUsers } = require("../controllers/usuarioController")
 
 
-const getUsersHandler = (req, res) => {
-    const { name } = req.query;
-    if (name !== undefined) {
-        res.status(200).send(`Quiero mostrar todo slos que se llamen: ${name}`);
-    }else {
-        res.status(200).send("Se mostrará todos los Usuarios");
+const getUsersHandler = async (req, res) => {
+    try {
+        const userList = await getUsers();
+        if(!userList) return
+
+        res.status(200).json( userList )
+    } catch (error) {
+        res.status(400).json({ error: error.message })
     }
-    
 }
 
-const getuserHandler = (req, res) => {
+const getuserHandler = async (req, res) => {
     const { id } = req.params;
     res.status(200).send(`Va enviar el detalle del Usuario de ID  ${id}`)
 }
