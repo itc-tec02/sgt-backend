@@ -9,7 +9,7 @@ const login = async (user) => {
     // const dbUser =  await segUsuario.findOne({ where: { CodUsuario: user.id, password: user.password } })
     const [dbUser] = await sequelize.query(`CALL sp_prueba_login('${user.id}','${user.password}')`)
     if(!dbUser) throw Error("User not found");
-    console.log(dbUser)
+    
     const payload = {
         id: dbUser.CodUsuario,
         username: dbUser.Nombres,

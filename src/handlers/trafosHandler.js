@@ -1,7 +1,6 @@
 const { createTrafo, getAllTrafos, getTrafobyId, searchTrafoByIndustria  } = require("../controllers/trafoController");
 
 const getTrafosHandler = async (req , res) => {
-    // res.status(200).send("Estoy en Trafos")
     try {
 
         const { fabricante } = req.query;
@@ -12,7 +11,6 @@ const getTrafosHandler = async (req , res) => {
         res.status(400).json({ error: error.message });
     }
 }
-
 
 const getTrafoHandler = async (req , res) => {
     try {
@@ -34,10 +32,10 @@ const getTrafoHandler = async (req , res) => {
 
 const createTrafoHandler = async (req , res) => {
     try {
-        const trafoBody = {...req.body};
 
-        // console.log(trafoBody);
-        // const newTrafo = await createTrafo(TipoXfo, NroCIA, Fabricante);
+        const trafoBody = {...req.body};
+        if(!trafoBody) return
+
         const newTrafo = await createTrafo(trafoBody);
         res.status(200).json(newTrafo)
         
