@@ -11,9 +11,13 @@ const getPuestosHandler = async (req, res) => {
 
 const createPuestoHandler = async (req, res) => {
     try {
-        
+
+        const puesto = {...req.body};
+
+        const newPuesto = await createPuesto(puesto);
+        res.status(200).json(newPuesto);        
     } catch (error) {
-        
+        res.status(400).json({ error: error.message});
     }
 }
 

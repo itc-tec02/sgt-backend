@@ -1,7 +1,8 @@
 const { xfopuesto, sequelize } = require("../db")
 
-const createPuesto = async (userId) => {
-    
+
+const createPuesto = async (newPuesto) => {
+    return await xfopuesto.create(newPuesto);
 }
 
 const getAllPuestos = async () => {

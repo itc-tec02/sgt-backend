@@ -3,16 +3,15 @@ const { DataTypes } = require("sequelize")
 module.exports = (sequelize) => {
     sequelize.define("xfopotnominal", {
         Codigo: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.CHAR(10),
             primaryKey: true
         },
-        CodPuesto: {
-            type: DataTypes.CHAR(8),
+        Descripcion: {
+            type: DataTypes.STRING(50),
             allowNull: true,
         },
-        EstadoInstalacion: {
-            type: DataTypes.CHAR(4),
+        Valor: {
+            type: DataTypes.DOUBLE,
             allowNull: true,
         }
     },{ timestamps: false, freezeTableName: true })

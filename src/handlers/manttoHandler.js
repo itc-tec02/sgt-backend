@@ -6,9 +6,10 @@ const {
     getOpInfo,
     getContrat,
     getOpMant,
-
     getGrupo,
-
+    createCentResp,
+    updatePotNominal,
+    deletePotNominal,
 } = require("../controllers/manttoController")
 
 //* GET Mantenimiento Handlers
@@ -78,7 +79,7 @@ const getOperMantRed = async (req, res) => {
 const getGrupoHandler = async (req, res) => {
     try {
         const {grupo} = req.params;        
-        // if(!grupo) throw Error("No se especificó código de Grupo")
+        if(!grupo) throw new Error("No se especificó código de Grupo")
 
         const [paramGrupo] = await getGrupo(grupo);
 
@@ -88,21 +89,61 @@ const getGrupoHandler = async (req, res) => {
     }
 }
 
+//* POST Mantenimiento Handlers
+
+const updatePotNominalHandler = async (req, res) => {
+    try {
+        const potNomBody = {...req.body}        
+        if(!potNomBody) throw new Error("Body undefined")
+
+        const [editedPotNom] = await updatePotNominal(potNomBody);
+
+        res.status(200).json(editedPotNom);
+
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}
 
 //* POST Mantenimiento Handlers
 
 const createPotNominalHandler = async (req, res) => {
     try {
         const potNomalBody = {...req.body};
-        if(!potNomalBody) return
+        if(!potNomalBody) throw new Error("Body undefined")
         
-        const newPotNomal = await createPotNominal(potNomalBody)
+        const [newPotNomal] = await createPotNominal(potNomalBody)
         res.status(200).json(newPotNomal);
     } catch (error) {
         res.status(200).json({ error: error.message});
     }
 }
 
+const createCentRespHandler = async (req, res) => {
+    try {
+        const body = {...req.body}
+        if(!body) throw new Error("Body undefined")
+
+        const newCentResp = await createCentResp(body)
+        res.status(200).json(newCentResp);
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+
+
+const deletePotNominalHandler = async(req, res) => {
+    try {
+        const {potId} = req.params;
+        if(!potId) throw new Error("Not Id Provided")
+        
+        const deletedPotNom = await deletePotNominal(potId)
+        
+        res.status(200).json(deletedPotNom);
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
 
 module.exports = {
     createPotNominalHandler,
@@ -114,4 +155,8 @@ module.exports = {
     getPotNominalHandler,
 
     getGrupoHandler,
+    createCentRespHandler,
+    updatePotNominalHandler,
+
+    deletePotNominalHandler,
 }

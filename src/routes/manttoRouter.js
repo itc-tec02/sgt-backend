@@ -7,8 +7,10 @@ const {
     getOperInfo,
     getOperMantRed,
     getPotNominalHandler,
-
-    getGrupoHandler,    
+    getGrupoHandler,
+    createCentRespHandler,
+    updatePotNominalHandler,
+    deletePotNominalHandler,
 } = require("../handlers/manttoHandler")
 
 const manttoRouter = Router();
@@ -16,6 +18,9 @@ const manttoRouter = Router();
 //* Mantenimiento Potencia Nominal
 manttoRouter.get("/pn", getPotNominalHandler);
 manttoRouter.post("/pn", createPotNominalHandler);
+manttoRouter.put("/pn", updatePotNominalHandler)
+manttoRouter.delete("/pn/:potId", deletePotNominalHandler)
+
 
 //* Mantenimiento Centro de Responsabilidad
 manttoRouter.get("/adm", getAdmSistema);
@@ -23,6 +28,8 @@ manttoRouter.get("/alm", getAlmacenHandler);
 manttoRouter.get("/coi", getOperInfo);
 manttoRouter.get("/cpt", geContratista);
 manttoRouter.get("/omr", getOperMantRed);
+
+manttoRouter.post("/cr", createCentRespHandler);
 
 // manttoRouter.post("/adm", createAdmSistema);
 // manttoRouter.post("/alm", createAlmacen);
