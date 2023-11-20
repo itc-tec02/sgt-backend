@@ -10,16 +10,20 @@ const {
     getGrupoHandler,
     createCentRespHandler,
     updatePotNominalHandler,
-    updateCenRespHandler,
+    updateCentRespHandler,
+    updateGrupoHandler,
     deletePotNominalHandler,
+    createGrupoHandler,
+    getByIdPotNomHandler,
 } = require("../handlers/manttoHandler")
 
 const manttoRouter = Router();
 
 //* Mantenimiento Potencia Nominal
 manttoRouter.get("/pn", getPotNominalHandler);
+manttoRouter.get("/pn/:potId", getByIdPotNomHandler);
 manttoRouter.post("/pn", createPotNominalHandler);
-manttoRouter.put("/pn", updatePotNominalHandler)
+manttoRouter.put("/pn/:potId", updatePotNominalHandler)
 manttoRouter.delete("/pn/:potId", deletePotNominalHandler)
 
 
@@ -30,17 +34,15 @@ manttoRouter.get("/coi", getOperInfo);
 manttoRouter.get("/cpt", geContratista);
 manttoRouter.get("/omr", getOperMantRed);
 
+
 manttoRouter.post("/cr", createCentRespHandler);
-manttoRouter.put("/cr", updateCenRespHandler);
+manttoRouter.put("/cr", updateCentRespHandler);
 
-
-// manttoRouter.post("/adm", createAdmSistema);
-// manttoRouter.post("/alm", createAlmacen);
-// manttoRouter.post("/coi", createOperInfo);
-// manttoRouter.post("/cpt", createontratista);
-// manttoRouter.post("/omr", createOperMant);
 
 //* Mantenimiento Grupos
 manttoRouter.get("/gpo/:grupo", getGrupoHandler);
+manttoRouter.post("/gpo", createGrupoHandler);
+manttoRouter.put("/gpo", updateGrupoHandler);
+
 
 module.exports = manttoRouter;

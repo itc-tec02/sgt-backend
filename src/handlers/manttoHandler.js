@@ -8,9 +8,12 @@ const {
     getOpMant,
     getGrupo,
     createCentResp,
+    createGrupo,
     updatePotNominal,
-    deletePotNominal,
+    updateGrupo,
     updateCentResp,
+    deletePotNominal,
+    getbyIdPotNominal,
 } = require("../controllers/manttoController")
 
 //* GET Mantenimiento Handlers
@@ -22,6 +25,20 @@ const getPotNominalHandler = async (req, res) => {
         res.status(200).json(potNomal);
     } catch (error) {
         res.status(200).json({ error: error.message});
+    }
+}
+const getByIdPotNomHandler = async(req, res) => {
+    try {
+        const { potId } = req.params
+        if(!potId) throw new Error("No se especificó ID de Potencia");
+
+        const potNom = await getbyIdPotNominal(potId);
+        if(!potNom) throw new Error(`No existe registro con id ${potId}`);
+
+        res.status(200).json(potNom);
+        
+    } catch (error) {
+        
     }
 }
 
@@ -90,14 +107,20 @@ const getGrupoHandler = async (req, res) => {
     }
 }
 
-//* POST Mantenimiento Handlers
+//* PUT Mantenimiento Handlers
 
 const updatePotNominalHandler = async (req, res) => {
     try {
-        const potNomBody = {...req.body}        
+        const {potId} = req.params;
+        if(!potId) throw new Error("No se especificó ID")
+        
+        const potNom = await getbyIdPotNominal(potId);
+        if(!potNom) throw new Error(`No existe registro con id ${potId}`);
+
+        const potNomBody = {...req.body}
         if(!potNomBody) throw new Error("Body undefined")
 
-        const [editedPotNom] = await updatePotNominal(potNomBody);
+        const [editedPotNom] = await updatePotNominal(potNomBody, potId);
 
         res.status(200).json(editedPotNom);
 
@@ -105,16 +128,29 @@ const updatePotNominalHandler = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 }
-const deletePotNominalHandler = async(req, res) => {
+const updateCentRespHandler = async (req, res) => {
     try {
-        const {potId} = req.params;
-        if(!potId) throw new Error("Not Id Provided")
-        
-        const deletedPotNom = await deletePotNominal(potId)
-        
-        res.status(200).json(deletedPotNom);
+        const body = {...req.body};
+        if(!body) throw new Error("Body undefined")
+
+        const editCentResp = await updateCentResp(body);
+        res.status(200).json(editCentResp)
+
     } catch (error) {
         res.status(400).json({ error: error.message })
+    }
+}
+
+const updateGrupoHandler = async(req, res) => {
+    try {
+        const body = {...req.body};
+        if(!body) throw new Error("Body undefined")
+
+        const newGrupo = await updateGrupo(body);
+        res.status(200).json(newGrupo);
+        
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
 }
 
@@ -144,13 +180,30 @@ const createCentRespHandler = async (req, res) => {
     }
 }
 
-const updateCenRespHandler = async (req, res) => {
+const createGrupoHandler = async(req, res) => {
     try {
         const body = {...req.body};
-        if(body) throw new Error("Body undefined")
+        if(!body) throw new Error("Body undefined")
 
-        const editCentResp = await updateCentResp();
-        res.status(200).json(editCentResp)
+        const newGrupo = await createGrupo(body);
+        res.status(200).json(newGrupo);
+        
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}
+
+
+//* DELETE Mantenimiento Handlers
+
+const deletePotNominalHandler = async(req, res) => {
+    try {
+        const {potId} = req.params;
+        if(!potId) throw new Error("Not Id Provided")
+        
+        const deletedPotNom = await deletePotNominal(potId)
+        
+        res.status(200).json(deletedPotNom);
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
@@ -164,11 +217,14 @@ module.exports = {
     getOperInfo,
     getOperMantRed,
     getPotNominalHandler,
+    getByIdPotNomHandler,
 
     getGrupoHandler,
     createCentRespHandler,
+    createGrupoHandler,
     updatePotNominalHandler,
-    updateCenRespHandler,
+    updateCentRespHandler,
+    updateGrupoHandler,
 
     deletePotNominalHandler,
 }
