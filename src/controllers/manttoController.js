@@ -1,6 +1,5 @@
 const { sequelize, xfopotnominal  } = require("../db")
 
-
 //* GET Mantenimiento Controllers
 
 const getPotNominal = async () => {
@@ -35,6 +34,9 @@ const getGrupo = async (grupo) => {
 const updatePotNominal = async( potObj ) => {
     return await xfopotnominal.update( potObj, { where: { Codigo : potObj.Codigo } })
 }
+const updateCentResp = async({CodCR, NombreCR, CodCRPadre, abreviatura}) => {
+    return await sequelize.query(`CALL sp_update_CentResp('${CodCR}','${NombreCR}','${CodCRPadre}','${abreviatura}')`)
+}
 
 //* POST Mantenimiento Controllers
 
@@ -46,7 +48,7 @@ const createCentResp = async({CodCR, NombreCR, CodCRPadre, abreviatura}) => {
     return await sequelize.query(`CALL sp_insert_CentroResp ('${CodCR}', '${NombreCR}', '${CodCRPadre}', '${abreviatura}')`)
 }
 
-//* PUT Mantenimiento Controllers
+//* DELETE Mantenimiento Controllers
 const deletePotNominal = async( potId ) => {
     return await xfopotnominal.destroy( { where: { Codigo : potId } })
 }
@@ -64,5 +66,6 @@ module.exports = {
     getGrupo,
     createCentResp,
     updatePotNominal,
+    updateCentResp,
     deletePotNominal
 }

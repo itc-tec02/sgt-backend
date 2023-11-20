@@ -10,6 +10,7 @@ const {
     getGrupoHandler,
     createCentRespHandler,
     updatePotNominalHandler,
+    updateCenRespHandler,
     deletePotNominalHandler,
 } = require("../handlers/manttoHandler")
 
@@ -30,6 +31,8 @@ manttoRouter.get("/cpt", geContratista);
 manttoRouter.get("/omr", getOperMantRed);
 
 manttoRouter.post("/cr", createCentRespHandler);
+manttoRouter.put("/cr", updateCenRespHandler);
+
 
 // manttoRouter.post("/adm", createAdmSistema);
 // manttoRouter.post("/alm", createAlmacen);

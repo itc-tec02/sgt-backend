@@ -10,6 +10,7 @@ const {
     createCentResp,
     updatePotNominal,
     deletePotNominal,
+    updateCentResp,
 } = require("../controllers/manttoController")
 
 //* GET Mantenimiento Handlers
@@ -104,6 +105,18 @@ const updatePotNominalHandler = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 }
+const deletePotNominalHandler = async(req, res) => {
+    try {
+        const {potId} = req.params;
+        if(!potId) throw new Error("Not Id Provided")
+        
+        const deletedPotNom = await deletePotNominal(potId)
+        
+        res.status(200).json(deletedPotNom);
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
 
 //* POST Mantenimiento Handlers
 
@@ -131,15 +144,13 @@ const createCentRespHandler = async (req, res) => {
     }
 }
 
-
-const deletePotNominalHandler = async(req, res) => {
+const updateCenRespHandler = async (req, res) => {
     try {
-        const {potId} = req.params;
-        if(!potId) throw new Error("Not Id Provided")
-        
-        const deletedPotNom = await deletePotNominal(potId)
-        
-        res.status(200).json(deletedPotNom);
+        const body = {...req.body};
+        if(body) throw new Error("Body undefined")
+
+        const editCentResp = await updateCentResp();
+        res.status(200).json(editCentResp)
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
@@ -157,6 +168,7 @@ module.exports = {
     getGrupoHandler,
     createCentRespHandler,
     updatePotNominalHandler,
+    updateCenRespHandler,
 
     deletePotNominalHandler,
 }

@@ -31,7 +31,10 @@ const getPuestoHandler = async (req, res) => {
 
 const updatePuestoHandler = async (req, res) => {
     try {
+        const puestoId = req.params
+        const puesto = {...req.body}
         
+
     } catch (error) {
         
     }
