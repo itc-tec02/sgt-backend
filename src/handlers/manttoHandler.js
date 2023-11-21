@@ -1,19 +1,19 @@
 const { 
-    getPotNominal,
-    createPotNominal,
-    getAdm,
-    getAlmacen,
-    getOpInfo,
-    getContrat,
-    getOpMant,
-    getGrupo,
     createCentResp,
     createGrupo,
-    updatePotNominal,
-    updateGrupo,
-    updateCentResp,
+    createPotNominal,
     deletePotNominal,
+    getAdm,
+    getAlmacen,
     getbyIdPotNominal,
+    getContrat,
+    getGrupo,
+    getOpInfo,
+    getOpMant,
+    getPotNominal,
+    updateCentResp,
+    updateGrupo,
+    updatePotNominal,
 } = require("../controllers/manttoController")
 
 //* GET Mantenimiento Handlers
@@ -113,7 +113,7 @@ const updatePotNominalHandler = async (req, res) => {
     try {
         const {potId} = req.params;
         if(!potId) throw new Error("No se especificó ID")
-        
+
         const potNom = await getbyIdPotNominal(potId);
         if(!potNom) throw new Error(`No existe registro con id ${potId}`);
 
@@ -210,21 +210,19 @@ const deletePotNominalHandler = async(req, res) => {
 }
 
 module.exports = {
+    createCentRespHandler,
+    createGrupoHandler,
     createPotNominalHandler,
+    deletePotNominalHandler,
     geContratista,
     getAdmSistema,
     getAlmacenHandler,
+    getByIdPotNomHandler,
+    getGrupoHandler,
     getOperInfo,
     getOperMantRed,
     getPotNominalHandler,
-    getByIdPotNomHandler,
-
-    getGrupoHandler,
-    createCentRespHandler,
-    createGrupoHandler,
-    updatePotNominalHandler,
     updateCentRespHandler,
     updateGrupoHandler,
-
-    deletePotNominalHandler,
+    updatePotNominalHandler,
 }

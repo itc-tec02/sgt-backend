@@ -1,20 +1,20 @@
 const { Router } = require("express")
 const {
+    createCentRespHandler,
+    createGrupoHandler,
     createPotNominalHandler,
+    deletePotNominalHandler,
     geContratista,
     getAdmSistema,
     getAlmacenHandler,
+    getByIdPotNomHandler,
+    getGrupoHandler,
     getOperInfo,
     getOperMantRed,
     getPotNominalHandler,
-    getGrupoHandler,
-    createCentRespHandler,
-    updatePotNominalHandler,
     updateCentRespHandler,
     updateGrupoHandler,
-    deletePotNominalHandler,
-    createGrupoHandler,
-    getByIdPotNomHandler,
+    updatePotNominalHandler,
 } = require("../handlers/manttoHandler")
 
 const manttoRouter = Router();
