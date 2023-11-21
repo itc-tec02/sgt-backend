@@ -34,6 +34,14 @@ const getGrupo = async (grupo) => {
     return await sequelize.query(`SELECT * FROM gentablacodigo WHERE codgenTablaTipo= '${grupo}' `)
 }
 
+const getByIdGrupo = async (grupo) => {
+    return await sequelize.query(`SELECT * FROM gentablacodigo WHERE codgenTablaTipo= '${grupo}' `)
+}
+
+const getByIdCentResp = async (idCr) => {
+    return await sequelize.query(`SELECT * FROM segcr WHERE CodCR = '${idCr}'`)
+}
+
 //* PUT Mantenimiento Controllers
 const updatePotNominal = async( potObj, potId ) => {
     return await xfopotnominal.update( potObj, { where: { Codigo: potId } })
@@ -76,6 +84,7 @@ module.exports = {
     getOpMant,
     getPotNominal,
     getbyIdPotNominal,
+    getByIdCentResp,
 
     getGrupo,
     createCentResp,

@@ -6,6 +6,8 @@ const {
     getAdm,
     getAlmacen,
     getbyIdPotNominal,
+    getByIdGrupo,
+    getByIdCentResp,
     getContrat,
     getGrupo,
     getOpInfo,
@@ -35,10 +37,9 @@ const getByIdPotNomHandler = async(req, res) => {
         const potNom = await getbyIdPotNominal(potId);
         if(!potNom) throw new Error(`No existe registro con id ${potId}`);
 
-        res.status(200).json(potNom);
-        
+        res.status(200).json(potNom);     
     } catch (error) {
-        
+        res.status(400).json({ error: error.message });
     }
 }
 
@@ -92,8 +93,21 @@ const getOperMantRed = async (req, res) => {
         res.status(400).json( { error: error.message } )
     }
 }
+const getByIdCentRespHandler = async(req, res) => {
+    try {
+        const { idCr } = req.params;
+        if(!idCr) throw new Error("No se especificó ID Centro Responsabilidad");
 
-//GET DE GRUPOS HANDLERS
+        const [byIdCentResp] = await getByIdCentResp(idCr);
+        if(!byIdCentResp) throw  new Error(`No existe registro con id ${idCr}`)
+
+        res.status(200).json(byIdCentResp)
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+
+//* GET DE GRUPOS HANDLERS
 const getGrupoHandler = async (req, res) => {
     try {
         const {grupo} = req.params;        
@@ -106,6 +120,20 @@ const getGrupoHandler = async (req, res) => {
         res.status(400).json( {error: error.nessage });
     }
 }
+
+const getByIdGrupoHandler = async(req, res) => {
+    try {
+        const { idGrupo } = req.params;
+        if(!idGrupo) throw new Error("No se envió ID Grupo")
+
+        const grupo = await getByIdGrupo(idGrupo)
+        if(!grupo) throw new Error(`No existe registro con id ${idGrupo}`);
+
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+
 
 //* PUT Mantenimiento Handlers
 
@@ -218,6 +246,7 @@ module.exports = {
     getAdmSistema,
     getAlmacenHandler,
     getByIdPotNomHandler,
+    getByIdCentRespHandler,
     getGrupoHandler,
     getOperInfo,
     getOperMantRed,
@@ -225,4 +254,5 @@ module.exports = {
     updateCentRespHandler,
     updateGrupoHandler,
     updatePotNominalHandler,
+    getByIdGrupoHandler,
 }

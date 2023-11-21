@@ -7,14 +7,20 @@ const createPuesto = async (newPuesto) => {
 
 const getAllPuestos = async () => {
     return await sequelize.query(`CALL sp_get_puestos()`)
+    // return await xfopuesto.findAll()
 }
 
-const getPuestobyId = async (userId) => {
-    
+const getPuestoById = async (idPuesto) => {
+    return await xfopuesto.findByPk(idPuesto)
+}
+
+const updatePuesto = async(objPuesto, id) => {
+    return await xfopuesto.update(objPuesto, { where: { idxfoPuesto: id} })
 }
 
 module.exports = { 
     createPuesto,
     getAllPuestos,
-    getPuestobyId,
+    getPuestoById,
+    updatePuesto,
 }

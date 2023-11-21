@@ -8,6 +8,8 @@ const {
     getAdmSistema,
     getAlmacenHandler,
     getByIdPotNomHandler,
+    getByIdGrupoHandler,
+    getByIdCentRespHandler,
     getGrupoHandler,
     getOperInfo,
     getOperMantRed,
@@ -33,7 +35,7 @@ manttoRouter.get("/alm", getAlmacenHandler);
 manttoRouter.get("/coi", getOperInfo);
 manttoRouter.get("/cpt", geContratista);
 manttoRouter.get("/omr", getOperMantRed);
-
+manttoRouter.get("/cr/:idCr", getByIdCentRespHandler)
 
 manttoRouter.post("/cr", createCentRespHandler);
 manttoRouter.put("/cr", updateCentRespHandler);
@@ -41,6 +43,8 @@ manttoRouter.put("/cr", updateCentRespHandler);
 
 //* Mantenimiento Grupos
 manttoRouter.get("/gpo/:grupo", getGrupoHandler);
+manttoRouter.get("/gpobyid", getByIdGrupoHandler);
+
 manttoRouter.post("/gpo", createGrupoHandler);
 manttoRouter.put("/gpo", updateGrupoHandler);
 
