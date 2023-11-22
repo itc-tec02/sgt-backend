@@ -11,7 +11,8 @@ const getAllPuestos = async () => {
 }
 
 const getPuestoById = async (idPuesto) => {
-    return await xfopuesto.findByPk(idPuesto)
+    // return await xfopuesto.findByPk(idPuesto)
+    return await sequelize.query(`CALL sp_getByID_puestos('${idPuesto}')`)
 }
 
 const updatePuesto = async(objPuesto, id) => {
