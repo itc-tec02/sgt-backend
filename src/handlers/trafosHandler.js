@@ -12,7 +12,7 @@ const getTrafosHandler = async (req , res) => {
     }
 }
 
-const getTrafoHandler = async (req , res) => {
+const getTrafoByIdHandler = async (req , res) => {
     try {
         const { id } = req.params;
         console.log(id);
@@ -52,7 +52,7 @@ const deleteTrafoHandler = (req , res) => {
 
 module.exports = {
     getTrafosHandler,
-    getTrafoHandler,
+    getTrafoByIdHandler,
     createTrafoHandler,
     updateTrafoHandler,
     deleteTrafoHandler,

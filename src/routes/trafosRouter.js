@@ -1,7 +1,7 @@
 const { Router } = require("express")
 const { 
     getTrafosHandler,
-    getTrafoHandler,
+    getTrafoByIdHandler,
     createTrafoHandler,
     updateTrafoHandler,
     deleteTrafoHandler } = require("../handlers/trafosHandler")
@@ -10,7 +10,7 @@ const trafoRouter = Router();
 
 trafoRouter.get("/", getTrafosHandler )
 
-trafoRouter.get("/:id", getTrafoHandler )
+trafoRouter.get("/:id", getTrafoByIdHandler )
 
 trafoRouter.post("/", createTrafoHandler )
 
