@@ -4,7 +4,7 @@ const { getToken, authLogin } = require("../handlers/authHandler")
 
 const authRouter = Router();
 
-authRouter.get("/", getToken )
+authRouter.get("/check-token", getToken )
 
 authRouter.post("/login", authLogin )
 

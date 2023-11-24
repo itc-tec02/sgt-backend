@@ -2,8 +2,10 @@ const { segusuario, sequelize } = require("../db")
 const { SECRET_KEY } = process.env
 const jwt = require('jsonwebtoken');
 
-const getUserToken = async (TrafoId) => {
-    return await segusuario.findByPk(TrafoId)
+const checkToken = async (token) => {
+    const resultado = jwt.verify(token, SECRET_KEY);
+    // const resultado = jwt.decode(token)
+    console.log('Resultado es : ', resultado);
 }
 const login = async (user) => {
     // const dbUser =  await segUsuario.findOne({ where: { CodUsuario: user.id, password: user.password } })
@@ -25,6 +27,6 @@ const login = async (user) => {
 
 
 module.exports = {
-    getUserToken,
+    checkToken,
     login,
 }

@@ -1,7 +1,14 @@
-const { getUserToken, login } = require("../controllers/authController")
+const { checkToken, login } = require("../controllers/authController")
 
 const getToken = async (req, res) => {
-    res.status(200).send("aqui debe sacar el token si es que existe")
+    try {
+        const token = req.headers.authorization;
+        // console.log(token);
+        checkToken(token)
+    } catch (error) {
+        res.status(404).json({ validate: "Se mando header correctamente"});    
+    }
+    res.status(404).json({ validate: "Se mando header correctamente"});
 }
 
 const authLogin = async (req, res) => {
