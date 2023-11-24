@@ -14,7 +14,7 @@ trafoRouter.get("/:id", getTrafoByIdHandler )
 
 trafoRouter.post("/", createTrafoHandler )
 
-trafoRouter.put("/", updateTrafoHandler )
+trafoRouter.put("/:id", updateTrafoHandler )
 
 trafoRouter.delete("/:id", deleteTrafoHandler )
 
