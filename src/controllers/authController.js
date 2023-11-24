@@ -3,10 +3,14 @@ const { SECRET_KEY } = process.env
 const jwt = require('jsonwebtoken');
 
 const checkToken = async (token) => {
-    const resultado = jwt.verify(token, SECRET_KEY);
-    // const resultado = jwt.decode(token)
-    console.log('Resultado es : ', resultado);
+    try {
+        const resultado = jwt.verify(token, SECRET_KEY);
+        console.log('Resultado es : ', resultado);    
+    } catch (error) {
+        console.log('El error es: ', error.message);
+    }    
 }
+
 const login = async (user) => {
     // const dbUser =  await segUsuario.findOne({ where: { CodUsuario: user.id, password: user.password } })
     const [dbUser] = await sequelize.query(`CALL sp_prueba_login('${user.id}','${user.password}')`)
