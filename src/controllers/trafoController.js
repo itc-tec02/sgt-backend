@@ -22,4 +22,12 @@ const createTrafo = async (trafoBody) => {
     return await xfotransformador.create(trafoBody)
 }
 
-module.exports = { createTrafo, getAllTrafos, getTrafobyId, searchTrafoByIndustria }
+const updateTrafo = async (objTrafo, id) => {
+    return await xfotransformador.update(objTrafo, { where: { idxfoTransformador: id} })
+}
+
+const deleteTrafo = async( id ) => {
+    return await xfotransformador.destroy( { where: { idxfoTransformador : id } })
+}
+
+module.exports = { createTrafo, getAllTrafos, getTrafobyId, searchTrafoByIndustria, updateTrafo, deleteTrafo }

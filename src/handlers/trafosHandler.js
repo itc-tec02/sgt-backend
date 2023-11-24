@@ -1,4 +1,4 @@
-const { createTrafo, getAllTrafos, getTrafobyId, searchTrafoByIndustria  } = require("../controllers/trafoController");
+const { createTrafo, getAllTrafos, getTrafobyId, searchTrafoByIndustria, updateTrafo, deleteTrafo } = require("../controllers/trafoController");
 
 const getTrafosHandler = async (req , res) => {
     try {
@@ -43,11 +43,35 @@ const createTrafoHandler = async (req , res) => {
         res.status(400).json({ error: error.message})
     }
 }
-const updateTrafoHandler = (req , res) => {
-    res.status(200).send("Estoy en la actualización de un Trafo")
+const updateTrafoHandler = async (req , res) => {
+    try {
+        const {id} = req.params
+        if(!id) throw new Error("No se especificó un ID de Puesto");
+
+        const trafo = await getTrafobyId(id);
+        if(!trafo) throw new Error(`No existe puesto con Id ${id}`)
+
+        const bodyTrafo = {...req.body};
+        if(!bodyTrafo) throw new Error("Body undefined")
+
+        const [editedTrafo] = await updateTrafo(bodyTrafo, id)
+        res.status(200).json(editedTrafo);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 }
-const deleteTrafoHandler = (req , res) => {
-    res.status(200).send("Estoy en la eliminación lógica (activo - inactivo) de un Trafo")
+const deleteTrafoHandler = async (req , res) => {
+    try {
+        const { id } = req.params; // { id:  999 }
+        
+        if( !id ) throw new Error("Not Id Provided")
+        
+        const deleteTrafoo = await deleteTrafo(id)
+        
+        res.status(200).json(deleteTrafoo);
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
 }
 
 module.exports = {
