@@ -26,7 +26,7 @@ const getPuestoByIdHandler = async (req, res) => {
         const { id } = req.params
         if(!id) throw new Error("No se especificó ID de Puesto")
 
-        const byIdPuesto = await getPuestoById(id);
+        const [byIdPuesto] = await getPuestoById(id);
         if(!byIdPuesto) throw new Error(`No se econtró registro con ID de Puesto ${id}`)
 
         res.status(200).json(byIdPuesto)
