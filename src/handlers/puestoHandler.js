@@ -43,7 +43,7 @@ const updatePuestoHandler = async (req, res) => {
         const puesto = await getPuestoById(id);
         if(!puesto) throw new Error(`No existe puesto con Id ${id}`)
 
-        const bodyPuesto = {...req.body};
+        const [bodyPuesto] = {...req.body};
         if(!bodyPuesto) throw new Error("Body undefined")
 
         const [editedPuesto] = await updatePuesto(bodyPuesto, id)
