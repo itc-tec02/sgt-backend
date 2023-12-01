@@ -3,14 +3,33 @@ const { SECRET_KEY } = process.env
 const jwt = require('jsonwebtoken');
 
 const checkToken = async (token) => {
-    const resultado = jwt.verify(token, SECRET_KEY);
-    // const resultado = jwt.decode(token)
-    console.log('Resultado es : ', resultado);
+    const newDecoded = jwt.verify(token, SECRET_KEY, (error, decoded) => {
+        if(error) {
+            if(error.name === 'TokenExpiredError') throw new Error("Token expired");
+            throw new Error('Token inválido');
+        }
+        return decoded
+    });
+    // const user = await segusuario.findByPk(newDecoded.payload);
+    const [user] = await sequelize.query(`CALL sp_token_Check_login('${newDecoded.payload}')`)
+    if(!user) throw new Error("No se encontró usuario.")
+
+    const payload = {
+        id: user.CodUsuario,
+        username: user.Nombres,
+        lastname: user.Apellidos,
+        abrev: user.Nombreabrev,
+        role: user.rol,
+        perfil: user.perfil,
+        perfil_desc: user.perfil_desc,
+    }
+    return { user: payload, token }
 }
+
 const login = async (user) => {
     // const dbUser =  await segUsuario.findOne({ where: { CodUsuario: user.id, password: user.password } })
     const [dbUser] = await sequelize.query(`CALL sp_prueba_login('${user.id}','${user.password}')`)
-    if(!dbUser) throw new Error("User not found");
+    if(!dbUser) throw new Error("No se encontró usuario.");
     
     const payload = {
         id: dbUser.CodUsuario,

@@ -4,11 +4,11 @@ const getToken = async (req, res) => {
     try {
         const token = req.headers.authorization;
         // console.log(token);
-        checkToken(token)
+        const resp = await checkToken(token)
+        res.status(200).json(resp);
     } catch (error) {
-        res.status(404).json({ validate: "Se mando header correctamente"});    
+        res.status(404).json({ error: error.message });
     }
-    res.status(404).json({ validate: "Se mando header correctamente"});
 }
 
 const authLogin = async (req, res) => {
