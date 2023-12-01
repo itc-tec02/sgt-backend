@@ -101,7 +101,7 @@ const getByIdCentRespHandler = async(req, res) => {
         const [byIdCentResp] = await getByIdCentResp(idCr);
         if(!byIdCentResp) throw  new Error(`No existe registro con id ${idCr}`)
 
-        res.status(200).json(byIdCentResp)
+        res.status(200).json(...byIdCentResp)
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
@@ -123,12 +123,12 @@ const getGrupoHandler = async (req, res) => {
 
 const getByIdGrupoHandler = async(req, res) => {
     try {
-        const { idGrupo } = req.params;
-        if(!idGrupo) throw new Error("No se envió ID Grupo")
+        const { idGrupo, id } = req.params;
+        if(!idGrupo || !id) throw new Error("No se enviaron los parametros")
 
-        const grupo = await getByIdGrupo(idGrupo)
+        const [grupo] = await getByIdGrupo(idGrupo,id)
         if(!grupo) throw new Error(`No existe registro con id ${idGrupo}`);
-
+        res.status(200).json(...grupo) // Tenemos uqe hacer spread ya que no se porque trae un arreglo =(
     } catch (error) {
         res.status(400).json({ error: error.message })
     }

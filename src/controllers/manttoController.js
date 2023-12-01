@@ -34,8 +34,8 @@ const getGrupo = async (grupo) => {
     return await sequelize.query(`SELECT * FROM gentablacodigo WHERE codgenTablaTipo= '${grupo}' `)
 }
 
-const getByIdGrupo = async (grupo) => {
-    return await sequelize.query(`SELECT * FROM gentablacodigo WHERE codgenTablaTipo= '${grupo}' `)
+const getByIdGrupo = async (grupo, id) => {
+    return await sequelize.query(`SELECT * FROM gentablacodigo WHERE codgenTablaTipo='${grupo}' AND Codigo='${id}' `)
 }
 
 const getByIdCentResp = async (idCr) => {
@@ -85,6 +85,7 @@ module.exports = {
     getPotNominal,
     getbyIdPotNominal,
     getByIdCentResp,
+    getByIdGrupo,
 
     getGrupo,
     createCentResp,

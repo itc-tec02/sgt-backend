@@ -43,7 +43,7 @@ manttoRouter.put("/cr", updateCentRespHandler);
 
 //* Mantenimiento Grupos
 manttoRouter.get("/gpo/:grupo", getGrupoHandler);
-manttoRouter.get("/gpobyid", getByIdGrupoHandler);
+manttoRouter.get("/:idGrupo/:id", getByIdGrupoHandler);
 
 manttoRouter.post("/gpo", createGrupoHandler);
 manttoRouter.put("/gpo", updateGrupoHandler);
